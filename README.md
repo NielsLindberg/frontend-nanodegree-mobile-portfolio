@@ -11,18 +11,16 @@ The same issues are prevalent for Computer and Mobile, with the emphasis on rend
 
 #### Picture Optimizaton
 The source pictures are way to large and could be minified in order to reduce the load requirements for them.
-```
-Add a grunt build tool to the project and include grunt tools to optimize pictures.
-```
+
+> Add a grunt build tool to the project and include grunt tools to optimize pictures.
 
 ### Render Blocking
 There are several render blocking js/css files adding to the load time of the page.
-```
-Determine what parts of the page is critical and should be  rending blocking. If any of the current render blocking contents  are not part of the critical content. Either delay the read of  thoose contents, read them asynchronously or embed any critical  properties directly in the HTML.
-```
+> Determine what parts of the page is critical and should be rending blocking.
+> If any of the current render blocking contents are not part of the critical content.
+> Either delay the read of thoose contents, read them asynchronously or embed any critical properties directly in the HTML.
+
 
 ### Use cache storaging.
 All ressources are being requested on every load.
-```
-Determine the minimum longevity of all ressources and create cache storaging rules that takes advantage of this.
-```
+> Determine the minimum longevity of all ressources and create cache storaging rules that takes advantage of this.
