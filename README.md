@@ -18,7 +18,7 @@ Add a grunt build tool to the project and include grunt tools to optimize pictur
 ### Render Blocking
 There are several render blocking js/css files adding to the load time of the page.
 ```
-Determine what parts of the page is critical and should be rending blocking. If any of the current render blocking contents are not part of the critical content. Either delay the read of thoose contents, read them asynchronously or embed any critical properties directly in the HTML.
+Determine what parts of the page is critical and should be  rending blocking. If any of the current render blocking contents  are not part of the critical content. Either delay the read of  thoose contents, read them asynchronously or embed any critical  properties directly in the HTML.
 ```
 
 ### Use cache storaging.
