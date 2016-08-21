@@ -8,6 +8,7 @@ To view the site pre build optimizations such as minified code etc. go to <a hre
 To compare with the old site that was delivered by Udacity go to <a href="http://nielslindberg.github.io/old" target="_blank">nielslindberg.github.io/old</a>
 
 ## Found Issues
+The following issues are structued in the order of 1. What is the issue, 2. What do I plan to do about it, 3. What did i do about it.
 
 ### Pagespeed Insights
 To run pagespeed insights i simply added my github.io page as a remote and did a force push to that repo since I didn't have anything important on there to begin with.
@@ -34,4 +35,4 @@ Since the CSS is relatively simple, the easiest solution was just to include it 
 All ressources are being requested on every load.
 > Determine the minimum longevity of all ressources and create cache storaging rules that takes advantage of this.
 
-Getting scores of 97/100 and 98/100 without implementing caching, so i deemed it not worthwhile doing.
+Getting scores of 96/100 and 97/100 without implementing caching, so i deemed it not worthwhile doing.
