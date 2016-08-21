@@ -10,14 +10,21 @@ module.exports = function(grunt) {
                     rename: false,
                     autoOrient: true,
                     sizes: [
-                        { width: 100 }
+                        { width: 150 }
                     ]
                 },
                 files: [{
+                    'dist/views/images/pizzeria.jpg': 'src/views/images/pizzeria.jpg'
+                }]
+            }
+        },
+        imagemin: {
+            dynamic: {
+                files: [{
                     expand: true,
-                    cwd: "src/",
-                    src: ['**/*.{jpeg,JPG,jpg,gif,png}'],
-                    dest: "dist/"
+                    cwd: 'dist/',
+                    src: ['**/*.{jpeg,png,jpg,gif}'],
+                    dest: 'dist/'
                 }]
             }
         },
@@ -58,5 +65,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-responsive-images');
-    grunt.registerTask('default', ['responsive_images', 'cssmin', 'htmlmin', 'uglify']);
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.registerTask('default', ['responsive_images', 'imagemin', 'cssmin', 'htmlmin', 'uglify']);
 };
