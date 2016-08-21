@@ -5,7 +5,7 @@ module.exports = function(grunt) {
             create_images: {
                 options: {
                     engine: 'im',
-                    quality: 25,
+                    quality: 100,
                     newFilesOnly: true,
                     rename: false,
                     autoOrient: true,
