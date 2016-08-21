@@ -28,6 +28,24 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        embed: {
+            options: {
+                threshold: '5KB'
+            },
+            some_target: {
+                files: [{
+                    'dist/index.html': 'src/index.html'
+                }, {
+                    'dist/project-2048.html': 'src/project-2048.html'
+                }, {
+                    'dist/project-mobile.html': 'src/project-mobile.html'
+                }, {
+                    'dist/project-webperf.html': 'src/project-webperf.html'
+                }, {
+                    'dist/views/pizza.html': 'dist/views/pizza.html'
+                }]
+            }
+        },
         cssmin: {
             target: {
                 files: [{
@@ -43,7 +61,7 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'dist/',
                     src: ['**/*.html'],
                     dest: 'dist/',
                     ext: '.html'
@@ -61,10 +79,11 @@ module.exports = function(grunt) {
             }
         }
     });
+    grunt.loadNpmTasks('grunt-responsive-images');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-embed');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-responsive-images');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.registerTask('default', ['responsive_images', 'imagemin', 'cssmin', 'htmlmin', 'uglify']);
+    grunt.registerTask('default', ['responsive_images', 'imagemin', 'embed', 'cssmin', 'htmlmin', 'uglify']);
 };
