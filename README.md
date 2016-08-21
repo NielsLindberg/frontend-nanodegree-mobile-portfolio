@@ -20,16 +20,18 @@ The source pictures are way to large and could be minified in order to reduce th
 
 > Add a grunt build tool to the project and include grunt tools to optimize pictures.
 
-In the grunt build i first reduce the size of the pizzaria picture to width 150px which is safely larger than the natural 110 needed. Afterwards all pictures in are compressed via grunt-imagemin
+In the grunt build i first reduce the size of the pizzaria picture to width 150px which is safely larger than the natural 110 needed. Afterwards all pictures are compressed via grunt-imagemin
 
 #### Render Blocking
 There are several render blocking js/css files adding to the load time of the page.
 > Determine what parts of the page is critical and should be rending blocking.
 > If any of the current render blocking contents are not part of the critical content.
 > Either delay the read of thoose contents, read them asynchronously or embed any critical properties directly in the HTML.
+
 Since the CSS is relatively simple, the easiest solution was just to include it directly in the HTML file as suggested in one of the project webcasts. To not ruin the structured development process the css and js are being embedded in the build process so that development still is being done in the respective css and js files. For consistency the already embedded javascript has been moved to its own js file which is then embedded in the build process.
 
 #### Use cache storaging.
 All ressources are being requested on every load.
 > Determine the minimum longevity of all ressources and create cache storaging rules that takes advantage of this.
+
 Getting scores of 97/100 and 98/100 without implementing caching, so i deemed it not worthwhile doing.
