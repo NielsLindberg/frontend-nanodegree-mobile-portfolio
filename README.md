@@ -2,7 +2,9 @@
 This project is a part of the fronend web developer nanodegree @ Udacity.com. The goal of the project is to achieve a mobile/computer pagespeed insight score of above 90 aswell as reduce any jank on the website through javascript optimizations. This readme describes the approach / found issues / proposed solutions for reaching those goals.
 
 To view the resulting site go to <a href="http://nielslindberg.github.io/dist" target="_blank">nielslindberg.github.io/dist</a>
+
 To view the site pre build optimizations such as minified code etc. go to <a href="http://nielslindberg.github.io/src" target="_blank">nielslindberg.github.io/src</a>
+
 To compare with the old site that was delivered by Udacity go to <a href="http://nielslindberg.github.io/old" target="_blank">nielslindberg.github.io/old</a>
 
 ## Found Issues
