@@ -28,24 +28,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        embed: {
-            options: {
-                threshold: '5KB'
-            },
-            some_target: {
-                files: [{
-                    'dist/index.html': 'src/index.html'
-                }, {
-                    'dist/project-2048.html': 'src/project-2048.html'
-                }, {
-                    'dist/project-mobile.html': 'src/project-mobile.html'
-                }, {
-                    'dist/project-webperf.html': 'src/project-webperf.html'
-                }, {
-                    'dist/views/pizza.html': 'dist/views/pizza.html'
-                }]
-            }
-        },
         cssmin: {
             target: {
                 files: [{
@@ -57,18 +39,10 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        htmlmin: {
-            target: {
-                files: [{
-                    expand: true,
-                    cwd: 'dist/',
-                    src: ['**/*.html'],
-                    dest: 'dist/',
-                    ext: '.html'
-                }]
-            }
-        },
         uglify: {
+            options: {
+                preserveComments: false
+            },
             my_target: {
                 files: [{
                     expand: true,
@@ -77,13 +51,46 @@ module.exports = function(grunt) {
                     dest: 'dist/'
                 }]
             }
+        },
+        htmlmin: {
+            target: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['**/*.html'],
+                    dest: 'dist/',
+                    ext: '.html'
+                }]
+            }
+        },
+        embed: {
+            options: {
+                threshold: '5KB'
+            },
+            some_target: {
+                files: [{
+                    'dist/index.html': 'dist/index.html'
+                }, {
+                    'dist/project-2048.html': 'dist/project-2048.html'
+                }, {
+                    'dist/project-mobile.html': 'dist/project-mobile.html'
+                }, {
+                    'dist/project-webperf.html': 'dist/project-webperf.html'
+                }, {
+                    'dist/views/pizza.html': 'dist/views/pizza.html'
+                }]
+            }
         }
     });
     grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-embed');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.registerTask('default', ['responsive_images', 'imagemin', 'embed', 'cssmin', 'htmlmin', 'uglify']);
+    grunt.loadNpmTasks('grunt-embed');
+    grunt.registerTask('default', ['responsive_images', 'imagemin', 'cssmin', 'uglify', 'htmlmin', 'embed']);
 };
