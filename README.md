@@ -3,11 +3,15 @@ This project is a part of the fronend web developer nanodegree @ Udacity.com. Th
 
 # Found Issues
 
+# Udacity Performance Optimization Project.
+To view the resulting site go to (niels.lindberg-poulsen.github.io/dist)[niels.lindberg-poulsen.github.io/dist]
+To view the site pre build optimizations such as minified code etc. go to (niels.lindberg-poulsen.github.io/src)[niels.lindberg-poulsen.github.io/src]
+To compare with the old site that was delivered by Udacity go to (niels.lindberg-poulsen.github.io/old)[niels.lindberg-poulsen.github.io/old]
 ## Pagespeed Insights
 To run pagespeed insights i simply added my github.io page as a remote and did a force push to that repo since I didn't have anything important on there to begin with.
 
 ### Mobile / Computer
-The same issues are prevalent for Computer and Mobile, with the emphasis on render blocking being higher for mobile. However since we want to tackle both must reads and recommendations of the pagespeed insights there is no difference in the issues we want to fix for the two medias.
+The same issues are prevalent for Computer and Mobile, with the emphasis on render blocking being higher for mobile. However since we want to tackle both 'must reads' and recommendations of the pagespeed insights there is no difference in the issues we want to fix for the two types of viewports.
 
 #### Picture Optimizaton
 The source pictures are way to large and could be minified in order to reduce the load requirements for them.
