@@ -1,28 +1,11 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
-        responsive_images: {
-            create_images: {
-                options: {
-                    engine: 'im',
-                    quality: 100,
-                    newFilesOnly: false,
-                    rename: false,
-                    autoOrient: true,
-                    sizes: [
-                        { width: 150 }
-                    ]
-                },
-                files: [{
-                    'dist/views/images/pizzeria.jpg': 'src/views/images/pizzeria.jpg'
-                }]
-            }
-        },
         imagemin: {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'dist/',
+                    cwd: 'src/',
                     src: ['**/*.{jpeg,png,jpg,gif}'],
                     dest: 'dist/'
                 }]
@@ -36,6 +19,23 @@ module.exports = function(grunt) {
                     src: ['**/*.css'],
                     dest: 'dist/',
                     ext: '.css'
+                }]
+            }
+        },
+        responsive_images: {
+            create_images: {
+                options: {
+                    engine: 'im',
+                    quality: 100,
+                    newFilesOnly: false,
+                    rename: false,
+                    autoOrient: true,
+                    sizes: [
+                        { width: 150 }
+                    ]
+                },
+                files: [{
+                    'dist/views/images/pizzeria.jpg': 'dist/views/images/pizzeria.jpg'
                 }]
             }
         },
@@ -86,11 +86,11 @@ module.exports = function(grunt) {
             }
         }
     });
-    grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-embed');
-    grunt.registerTask('default', ['responsive_images', 'imagemin', 'cssmin', 'uglify', 'htmlmin', 'embed']);
+    grunt.registerTask('default', ['imagemin','responsive_images', 'cssmin', 'uglify', 'htmlmin', 'embed']);
 };
