@@ -39,13 +39,13 @@ Getting scores of 96/100 and 97/100 without implementing caching, so i deemed it
 
 ### Pizza Scroll Jank
 
-## To many pizzaas
+#### To many pizzaas
 200 pizzas are being calculated and updated even though the screen at my viewport only have space for 32.
 > Calculate how many pizzas should be created based on screen height.
 
 The resulting calculation is stored in the variable: numberOfPizzas
 
-## Repeated calculations
+#### Repeated calculations
 > When updating the positions of the pizza's parts of the calculations that
 > are not specific to the pizzas are being done inside the pizza.item loop
 
@@ -53,7 +53,7 @@ I created an OOP approach to that allowed me to not only move some of the calcul
 
 index % 5 is moved to the load part of RAIL, document.scrollTop / 1250 is moved outside the pizza.item loop but still resides inside the animate part of RAIL (is scroll an animation or a response?).
 
-## Forced reflow
+#### Forced reflow
 > In the pizza update loop we are reading and writing to the CSSOM at the
 > same time in every part of the loop causing a massive amount of recalculate styles & layout.
 
