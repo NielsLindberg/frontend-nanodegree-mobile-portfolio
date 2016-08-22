@@ -536,7 +536,6 @@ function updatePositions() {
     }
 }
 
-
 var getViewportHeight = function() {
     return Math.max(screen.height, document.documentElement.clientHeight, window.innerHeight || 0);
 };
@@ -545,7 +544,9 @@ var getViewportWidth = function() {
     return Math.max(screen.width, document.documentElement.clientWidth, window.innerWidth || 0);
 };
 
-/* The Pizza Object, Tasty*/
+/* The Pizza Object, Tasty */
+/* The index and phasefactor are added here as properties in order to move some calculations
+from the animation phase to the load phase according to RAIL (LIAR) principles */
 var Pizza = function(index, className, src, height, width, left, top) {
     this.index = index;
     this.phaseFactor = index % 5;
@@ -563,6 +564,7 @@ Pizza.prototype.addToDom = function() {
     document.querySelector("#movingPizzas1").appendChild(this.element);
 };
 
+/* updates the pizzas position according to to provided scroll position */
 Pizza.prototype.updatePosition = function (scrollPosition) {
         var phase = 100 * Math.sin(scrollPosition + this.phaseFactor);
         this.element.style.transform = 'translateX(' + phase + 'px)';
