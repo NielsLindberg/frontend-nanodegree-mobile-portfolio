@@ -71,18 +71,30 @@ module.exports = function(grunt) {
             options: {
                 threshold: '5KB'
             },
-            some_target: {
-                files: [{
+            index: {
+                files: {
                     'dist/index.html': 'dist/index.html'
-                }, {
+                }
+            },
+            project: {
+                files: {
                     'dist/project-2048.html': 'dist/project-2048.html'
-                }, {
+                }
+            },
+            mobile: {
+                files: {
                     'dist/project-mobile.html': 'dist/project-mobile.html'
-                }, {
+                }
+            },
+            projectweb: {
+                files: {
                     'dist/project-webperf.html': 'dist/project-webperf.html'
-                }, {
+                }
+            },
+            pizza: {
+                files: {
                     'dist/views/pizza.html': 'dist/views/pizza.html'
-                }]
+                }
             }
         }
     });
@@ -92,5 +104,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-embed');
-    grunt.registerTask('default', ['imagemin','responsive_images', 'cssmin', 'uglify', 'htmlmin', 'embed']);
+    grunt.registerTask('default', ['imagemin', 'responsive_images', 'cssmin', 'uglify', 'htmlmin', 'embed']);
 };

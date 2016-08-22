@@ -36,3 +36,25 @@ All ressources are being requested on every load.
 > Determine the minimum longevity of all ressources and create cache storaging rules that takes advantage of this.
 
 Getting scores of 96/100 and 97/100 without implementing caching, so i deemed it not worthwhile doing.
+
+### Pizza Scroll Jank
+
+## To many pizzaas
+200 pizzas are being calculated and updated even though the screen at my viewport only have space for 32.
+> Calculate how many pizzas should be created based on screen height.
+
+The resulting calculation is stored in the variable: numberOfPizzas
+
+## Repeated calculations
+> When updating the positions of the pizza's parts of the calculations that
+> are not specific to the pizzas are being done inside the pizza.item loop
+
+I created an OOP approach to that allowed me to not only move some of the calculations outside each pizza loop but also outside the scroll event and into the actual initial creation of the pizzas.
+
+index % 5 is moved to the load part of RAIL, document.scrollTop / 1250 is moved outside the pizza.item loop but still resides inside the animate part of RAIL (is scroll an animation or a response?).
+
+## Forced reflow
+> In the pizza update loop we are reading and writing to the CSSOM at the
+> same time in every part of the loop causing a massive amount of recalculate styles & layout.
+
+Since i created an OOP model i could have saved the left positions on the objects and retrieve it through that in order to not read the CSSOM but an even better solution is just to perform a translate on the pizza's since that only results in composit being activated.
