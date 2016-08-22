@@ -54,7 +54,19 @@ I created an OOP approach to that allowed me to not only move some of the calcul
 index % 5 is moved to the load part of RAIL, document.scrollTop / 1250 is moved outside the pizza.item loop but still resides inside the animate part of RAIL (is scroll an animation or a response?).
 
 #### Forced reflow
-> In the pizza update loop we are reading and writing to the CSSOM at the
-> same time in every part of the loop causing a massive amount of recalculate styles & layout.
+In the pizza update loop we are reading and writing to the CSSOM at the
+same time in every part of the loop causing a massive amount of recalculate styles & layout.
 
-Since i created an OOP model i could have saved the left positions on the objects and retrieve it through that in order to not read the CSSOM but an even better solution is just to perform a translate on the pizza's since that only results in composit being activated.
+> Seperate CSSOM reads & writes into different loops, or reevaluate whether or not all the reads & writes are neccesarry.
+
+Since i created an OOP model i could have saved the left positions on the objects and retrieve it through that in order to not read the CSSOM but an even better solution is just to perform a translate on the pizza's since that only results in composite being activated.
+
+### Pizza Resize Jank
+
+#### Generally bad logical coding
+Coding should aim to be the shortest logical path to the result (while keeping the critical rendering path in mind). Alof of the code in the
+pizza resizing function is not the logical shortest path and the detours that are taken does nothing to improve the critical rendering path.
+> Redo the code so that its execution path is shorter.
+
+Deleted most of the code, kept the switch case selector and updated a newSize variable with case dependent percentage width.
+That percentage with is then added to the style.width attribute of all the pizza elements.
