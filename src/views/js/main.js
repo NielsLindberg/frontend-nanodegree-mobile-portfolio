@@ -442,6 +442,7 @@ var resizePizzas = function(size) {
             console.log("bug in changeSliderLabel");
             newSize = 25;
     }
+    // loops over all piza elements and changes their widths to the slider selected sizes
     var menuPizzas = document.querySelectorAll(".randomPizzaContainer");
     for (var i = 0; i < menuPizzas.length; i++) {
         menuPizzas[i].style.width = newSize + "%";
@@ -489,7 +490,10 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
+
+    // the scrollPosition is a windowscroll dependent calculation and only needs run once per scroll
     var scrollPosition = document.body.scrollTop / 1250;
+
     pizzArray.forEach(function(pizza) {
         pizza.updatePosition(scrollPosition);
     });
@@ -504,6 +508,15 @@ function updatePositions() {
     }
 }
 
+/*  Some helper functions for finding the viewport heights, found them on stackoverflow and added the screen.height
+    And screen.width variables to the max calculation, as the others only calculates height based on the sized window
+    e.g. if they tab only takes 50% of the height of the screen on page load then only 50% of the pizza will be present
+    even when the window is resized since the pizzas are added on load.
+    I'm not entirely sure if the screen.height, screen.width works in all browsers, so keeping the other clientWidth,
+    innerWidth checks in there aswell just in case.
+*/
+
+
 var getViewportHeight = function() {
     return Math.max(screen.height, document.documentElement.clientHeight, window.innerHeight || 0);
 };
@@ -512,9 +525,10 @@ var getViewportWidth = function() {
     return Math.max(screen.width, document.documentElement.clientWidth, window.innerWidth || 0);
 };
 
-/* The Pizza Object, Tasty */
-/* The index and phasefactor are added here as properties in order to move some calculations
-from the animation phase to the load phase according to RAIL (LIAR) principles */
+/*  The Pizza Object, Tasty
+    The index and phasefactor are added here as properties in order to move some calculations
+    from the animation phase to the load phase according to RAIL (LIAR) principles
+*/
 var Pizza = function(index, className, src, height, width, left, top) {
     this.index = index;
     this.phaseFactor = index % 5;
@@ -527,18 +541,19 @@ var Pizza = function(index, className, src, height, width, left, top) {
     this.element.style.top = top;
 };
 
-/* Add the pizza to the dom */
+/*  Add the pizza to the dom */
 Pizza.prototype.addToDom = function() {
     document.querySelector("#movingPizzas1").appendChild(this.element);
 };
 
-/* updates the pizzas position according to to provided scroll position */
+/*  updates the pizzas position according to to provided scroll position */
 Pizza.prototype.updatePosition = function(scrollPosition) {
     var phase = 100 * Math.sin(scrollPosition + this.phaseFactor);
     this.element.style.transform = 'translateX(' + phase + 'px)';
 };
 
 var pizzArray = [];
+
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 

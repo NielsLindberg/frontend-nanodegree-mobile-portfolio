@@ -1,11 +1,22 @@
 # Udacity Optimization Project.
 This project is a part of the fronend web developer nanodegree @ Udacity.com. The goal of the project is to achieve a mobile/computer pagespeed insight score of above 90 aswell as reduce any jank on the website through javascript optimizations. This readme describes the approach / found issues / proposed solutions for reaching those goals.
 
+## View the site
 To view the resulting site go to <a href="http://nielslindberg.github.io/dist" target="_blank">nielslindberg.github.io/dist</a>
 
 To view the site pre build optimizations such as minified code etc. go to <a href="http://nielslindberg.github.io/src" target="_blank">nielslindberg.github.io/src</a>
 
 To compare with the old site that was delivered by Udacity go to <a href="http://nielslindberg.github.io/old" target="_blank">nielslindberg.github.io/old</a>
+
+## Setup the development environment locally
+1. Make sure you haven node.js installed.
+2. Clone the project.
+3. run 'npm install' in your console from the root directory.
+4. Make your adjustments in the src/ folder.
+5. Build your adjustments to the dist/ folder by running the 'grunt' command from the console from the root directory.
+
+Everything in the dist folder is being created during the build, so you can delete the dist folder if you want, run grunt and get a new working
+dist directory.
 
 ## Found Issues
 The following issues are structued in the order of 1. What is the issue, 2. What do I plan to do about it, 3. What did i do about it.
